@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EXPEDIENTE 47 · La última investigación</title>
+<style>
+:root{--bg:#0b0c0d;--panel:#151718;--panel2:#1d2022;--paper:#e5ddca;--ink:#201d18;--gold:#c6a15b;--red:#a94d47;--muted:#92979a;--green:#739b78}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 50% -10%,#303033,#0b0c0d 50%);color:#eee9df;font-family:Georgia,serif}
+button,input,select{font:inherit}.app{max-width:1250px;margin:auto;padding:18px}
+header{display:flex;gap:18px;align-items:flex-end;border-bottom:1px solid #36383a;padding:15px 0 20px}
+.logo{font-size:13px;letter-spacing:4px;color:var(--gold)} h1{font-size:clamp(34px,7vw,76px);margin:2px 0;line-height:.9}.tag{color:#9d9d98;font-family:Arial,sans-serif;font-size:12px}
+.layout{display:grid;grid-template-columns:245px 1fr;gap:16px;margin-top:16px}.side{background:#111314;border:1px solid #303335;border-radius:10px;padding:12px;align-self:start;position:sticky;top:12px}
+.nav button{width:100%;text-align:left;border:0;border-bottom:1px solid #292b2c;background:transparent;color:#aaa;padding:12px 8px;cursor:pointer}.nav button:hover,.nav button.active{color:#f1e7d4;background:#1c1f20}.nav button.locked{opacity:.4;cursor:not-allowed}.timer{margin:8px 0 12px;padding:14px;text-align:center;border:1px solid #3b3d3e;background:#0c0d0e;font:700 24px Arial}.timer small{display:block;font-size:9px;letter-spacing:2px;color:#888;margin-bottom:5px}
+.content{min-width:0}.chapter{display:none}.chapter.active{display:block}.hero,.card{background:linear-gradient(145deg,#181b1c,#111314);border:1px solid #333637;border-radius:10px;padding:22px;margin-bottom:16px;box-shadow:0 12px 35px #0006}.hero{min-height:420px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--gold)} h2{font-size:34px;margin:8px 0 12px} h3{margin-top:0}.muted{color:var(--muted)} .stamp{display:inline-block;border:1px solid #a54d48;color:#d07d77;padding:7px 10px;font:700 10px Arial;letter-spacing:2px;transform:rotate(-2deg);margin-top:10px}
+.paper{background:var(--paper);color:var(--ink);padding:24px;border-radius:3px;margin:15px 0;box-shadow:0 8px 20px #0008;position:relative}.paper:before{content:"";position:absolute;inset:8px;border:1px solid #a9a08d;pointer-events:none}.paper>*{position:relative}.paper h3{color:#302b24}.note{background:#d9cfb8;color:#28231d;padding:15px;transform:rotate(-.6deg);font-family:"Courier New",monospace;border-left:4px solid #8d7d5d;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.evidence{background:#121516;border:1px solid #353839;padding:14px;border-radius:7px}.evidence b{color:var(--gold);font-family:Arial;font-size:12px}.photo{height:180px;background:linear-gradient(135deg,#4b4034,#171717 45%,#30291f);border:1px solid #625744;display:flex;align-items:flex-end;padding:12px;color:#e4dac6;font:11px Arial;margin-bottom:10px}.suspect{min-height:190px}.suspect .avatar{height:80px;width:80px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#b9a894,#514b43 40%,#202020 42%);float:left;margin:0 12px 8px 0;filter:grayscale(1)}
+table{width:100%;border-collapse:collapse;font-family:Arial;font-size:13px;margin:12px 0}th,td{border:1px solid #424545;padding:9px;text-align:left}th{color:var(--gold);background:#181b1c}.map{position:relative;height:390px;background:#c7bda6;color:#2a2925;overflow:hidden;border:8px solid #4d4335}.map:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(12deg,transparent 0 34px,#a59b87 35px 37px),repeating-linear-gradient(98deg,transparent 0 49px,#a59b87 50px 52px);opacity:.55}.pin{position:absolute;z-index:2;background:#251f18;color:#f1dfbb;border:2px solid #c6a15b;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:bold 12px Arial;cursor:pointer}.p1{left:13%;top:20%}.p2{left:42%;top:32%}.p3{left:58%;top:67%}.p4{left:76%;top:22%}.p5{left:70%;top:77%}.p6{left:24%;top:70%}
+input{width:100%;padding:12px;background:#0b0d0e;color:#eee;border:1px solid #464a4b;border-radius:5px;margin:7px 0 8px}button.action{padding:11px 16px;border-radius:5px;border:1px solid var(--gold);background:transparent;color:#eee;cursor:pointer}button.action:hover{background:#c6a15b18}.primary{background:var(--gold)!important;color:#1a160e!important;font-weight:bold}.feedback{min-height:22px;font:13px Arial;margin-top:8px}.ok{color:#83b987}.bad{color:#d9827a}.lockedbox{border:1px dashed #555;padding:20px;text-align:center;color:#888}.code{font:700 28px "Courier New";letter-spacing:8px;text-align:center;padding:16px;background:#0b0c0d;border:1px solid #343738}
+audio{width:100%}.secret{border-color:#856b35;background:#19170f}.final{border-color:var(--gold);background:radial-gradient(circle at 50% 0,#352a17,#171513 55%);text-align:center;padding:35px}.small{font:12px Arial;color:#858a8b}.hidden{display:none!important}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{position:static}.grid,.grid3{grid-template-columns:1fr}.map{height:300px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div><div class="logo">UNIDAD DE CASOS ESPECIALES</div><h1>EXPEDIENTE 47</h1><div class="tag">LA ÚLTIMA INVESTIGACIÓN · ACCESO RESTRINGIDO</div></div></header>
+<div class="layout">
+<aside class="side">
+<div class="timer"><small>TIEMPO DE INVESTIGACIÓN</small><span id="clock">01:30:00</span></div>
+<div class="nav" id="nav">
+<button data-c="intro" class="active">01 · Expediente inicial</button>
+<button data-c="scene" class="locked">02 · Escena</button>
+<button data-c="suspects" class="locked">03 · Sospechosos</button>
+<button data-c="press" class="locked">04 · Archivo de prensa</button>
+<button data-c="map" class="locked">05 · Mapa</button>
+<button data-c="comms" class="locked">06 · Comunicaciones</button>
+<button data-c="safe" class="locked">07 · Caja 47</button>
+<button data-c="final" class="locked">08 · Verdad final</button>
+</div>
+<p class="small">Investigadores: <b>Jessica F.</b> · <b>Iván M.</b></p>
+</aside>
+<main class="content">
+
+<section id="intro" class="chapter active">
+<div class="hero">
+<div class="eyebrow">23 · 07 · 2024 · 23:47</div>
+<h2>El expediente que nunca debió llegar a vosotros</h2>
+<p>Encontráis un sobre bajo la puerta. No tiene remitente. Dentro hay una fotografía, una llave con el número <b>47</b> y una nota.</p>
+<div class="paper"><p><b>«Si estáis leyendo esto, ya es demasiado tarde para mí.</b></p><p>La policía cerró el caso Vega hace seis meses. Dicen que fue un robo. Mienten.</p><p>Hay cuatro personas que saben qué ocurrió. Una de ellas está mintiendo. Y alguien ha hecho todo lo posible para que la prueba desaparezca.</p><p>No confiéis en la versión oficial.</p><p><b>— A.</b></p></div>
+<div class="note">23 — 7 — 24<br>J.F. / I.M.<br>JFB<br>«Te quiero igual»<br>«Tomé café»</div>
+<button class="action primary" onclick="begin()">ABRIR EL EXPEDIENTE</button>
+</div>
+</section>
+
+<section id="scene" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 01 · La escena</div><h2>La fotografía de Álex</h2>
+<p>El informe afirma que el reloj fue encontrado detenido a las <b>20:51</b>. La fotografía demuestra otra cosa.</p>
+<div class="photo">RECONSTRUCCIÓN FOTOGRÁFICA · DESPACHO DE ÁLEX<br><br>Reloj digital: <b>21:17</b> · ventana abierta · taza · grabadora · calendario · archivador</div>
+<div class="grid"><div class="evidence"><b>INFORME POLICIAL</b><p>20:51 — Álex compra café.<br>21:03 — entra en el edificio.<br>21:17 — vecino escucha un golpe.</p></div><div class="evidence"><b>ANOTACIÓN DE ÁLEX</b><p>«La verdad siempre deja huellas para quien sabe dónde mirar.»</p><p><b>17 / 21 / 20 / 1 / 14 / 15</b></p></div></div>
+<p>Ordenad los números como <b>hora del reloj → hora de entrada → compra de café</b> y convertid la diferencia entre cada pareja a letras (A=1).</p>
+<input id="s1" placeholder="Palabra"><button class="action" onclick="answer('s1','SECRETO','f1','suspects')">COMPROBAR</button><div id="f1" class="feedback"></div>
+</div></section>
+
+<section id="suspects" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 02 · Los cuatro</div><h2>Todos tienen algo que ocultar</h2>
+<div class="grid2 grid">
+<div class="evidence suspect"><div class="avatar"></div><h3>Clara Vidal</h3><p>Abogada de Álex. Asegura haber hablado con él a las 21:20.</p><p class="small">Registro: no existe ninguna llamada a esa hora.</p></div>
+<div class="evidence suspect"><div class="avatar"></div><h3>Bruno Salas</h3><p>Periodista. Antiguo compañero de Álex.</p><p class="small">En su ordenador: VEGA_47_FINAL.docx</p></div>
+<div class="evidence suspect"><div class="avatar"></div><h3>Marta Ruiz</h3><p>Vecina del edificio. Dice haber visto salir a un hombre a las 21:30.</p><p class="small">Lleva un collar con un escarabajo dorado.</p></div>
+<div class="evidence suspect"><div class="avatar"></div><h3>Diego León</h3><p>Dueño del Café Mirador. Coartada: 21:10–22:00.</p><p class="small">Matrícula de su coche: JFB.</p></div></div>
+<table><tr><th>Registro</th><th>Hora</th><th>Dato</th></tr><tr><td>Entrada edificio</td><td>21:03</td><td>Álex entra</td></tr><tr><td>Última llamada</td><td>20:42</td><td>17 segundos</td></tr><tr><td>Declaración Clara</td><td>21:20</td><td>«Hablé con Álex»</td></tr><tr><td>Recibo Café Mirador</td><td>21:32</td><td>2 cafés + 1 agua</td></tr></table>
+<p>¿Quién miente sobre haber hablado con Álex?</p><input id="s2" placeholder="Nombre y apellido"><button class="action" onclick="answer('s2','CLARA VIDAL','f2','press')">COMPROBAR</button><div id="f2" class="feedback"></div>
+</div></section>
+
+<section id="press" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 03 · Archivo de prensa</div><h2>Cuatro casos, un patrón</h2>
+<p>Hay cuatro recortes. Las fechas parecen decorativas. No lo son.</p>
+<div class="grid">
+<div class="paper"><h3>22/03/24 · EL DIARIO</h3><p>Empresario hallado muerto en extrañas circunstancias.</p><p>Acceso previo a información policial.</p></div>
+<div class="paper"><h3>15/05/24 · LA VOZ</h3><p>Robo de documentos confidenciales en el puerto.</p><p>Sin forzar cerraduras.</p></div>
+<div class="paper"><h3>23/07/24 · LA TRIBUNA</h3><p>Desaparición del periodista Álex Vega.</p><p>Expediente 47.</p></div>
+<div class="paper"><h3>02/09/24 · EL NORTE</h3><p>Nuevo caso de filtración de información policial.</p><p>Fuente anónima.</p></div></div>
+<div class="note">22/03/24 · 15/05/24 · 23/07/24 · 02/09/24<br><br>Busca qué número comparten las fechas al separar DÍA / MES / AÑO.</div>
+<p>El número que necesitáis es el <b>día</b> de la fecha de Álex. Combinadlo con la matrícula encontrada en el expediente de Diego. JFB no es una matrícula: es un desplazamiento.</p>
+<input id="s3" placeholder="Tres letras"><button class="action" onclick="answer('s3','QIO','f3','map')">COMPROBAR</button><div id="f3" class="feedback"></div>
+</div></section>
+
+<section id="map" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 04 · El mapa</div><h2>Donde terminan las vías</h2>
+<p>La grabadora recuperada contiene una frase:</p><div class="paper"><p>«Buscad el lugar donde la ciudad termina pero las vías continúan. Norte. 17. Azul.»</p></div>
+<div class="map"><button class="pin p1" onclick="mapPin(1)">1</button><button class="pin p2" onclick="mapPin(2)">2</button><button class="pin p3" onclick="mapPin(3)">3</button><button class="pin p4" onclick="mapPin(4)">4</button><button class="pin p5" onclick="mapPin(5)">5</button><button class="pin p6" onclick="mapPin(6)">6</button></div>
+<div id="mapmsg" class="feedback"></div>
+<p class="small">Pista: el lugar correcto tiene vías y está en el extremo norte del mapa. El número 17 aparece en la nota de Álex.</p>
+</div></section>
+
+<section id="comms" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 05 · Comunicaciones</div><h2>La canción en el recibo</h2>
+<p>En el Café Mirador aparece un recibo con una anotación:</p>
+<div class="paper"><p>2 cafés · 1 agua · 1 llamada desde cabina</p><p><b>TOMÉ CAFÉ</b></p><p>JFB · 23/07/24 · 21:32</p></div>
+<p>Álex dejó una instrucción: <em>«La primera letra de cada palabra que tomo.»</em></p>
+<p>Tomad la primera letra de las palabras <b>TOMÉ CAFÉ</b>, después usad <b>JFB</b> como desplazamiento -1, -2, -3.</p>
+<div class="code">S K ?</div>
+<p>¿Qué palabra de tres letras obtenéis?</p>
+<input id="s5" placeholder="Palabra"><button class="action" onclick="answer('s5','RIO','f5','safe')">COMPROBAR</button><div id="f5" class="feedback"></div>
+</div></section>
+
+<section id="safe" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 06 · Caja 47</div><h2>La llave abre algo más que una puerta</h2>
+<p>La caja tiene tres ruedas. La nota dice:</p>
+<div class="note">PRIMERA RUEDA: la fecha que no es una fecha.<br>SEGUNDA RUEDA: el número que aparece donde nadie mira.<br>TERCERA RUEDA: la persona que lleva el símbolo.</div>
+<p>Ya conocéis:</p><ul><li>23/07/24 → 23</li><li>17 → reloj</li><li>escarabajo dorado → Marta</li></ul>
+<p>Convertid <b>MARTA</b> a números con A=1 y sumad las cifras hasta obtener un solo dígito.</p>
+<div class="code">23 · 17 · ?</div>
+<input id="s6" placeholder="Código de tres números, ej. 23-17-7"><button class="action" onclick="answer('s6','23-17-2','f6','final')">ABRIR CAJA 47</button><div id="f6" class="feedback"></div>
+</div></section>
+
+<section id="final" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 07 · La verdad</div><h2>La persona que nunca desapareció</h2>
+<p>Dentro de la caja hay una carta.</p>
+<div class="paper"><p><b>«No busquéis a quien me hizo desaparecer.</b></p><p>Buscad a quien necesitaba que yo desapareciera.</p><p>La ventana, el reloj y la llamada fueron una mentira. La persona del escarabajo ayudó a construirla.</p><p>El hombre de la matrícula JFB no era el culpable. Y Clara mintió para protegerme.</p><p>El verdadero responsable tenía acceso a los expedientes antes de que fueran públicos.</p><p>Su firma aparece en todos los casos.</p><p>— Álex»</p></div>
+<p>Revisad los documentos. El nombre que aparece como responsable oficial de los cuatro expedientes es:</p>
+<div class="note">INSPECTOR RODRIGO LEÓN</div>
+<p>Pero falta una última prueba. Introducid la frase personal que Álex escondió en el expediente.</p>
+<input id="s7" placeholder="Frase"><button class="action" onclick="finish()">RESOLVER EL CASO</button><div id="f7" class="feedback"></div>
+</div>
+<div id="ending" class="card final hidden">
+<div class="eyebrow">EXPEDIENTE 47 · CERRADO</div><h2>CASO RESUELTO</h2>
+<p>Álex Vega fingió su desaparición con ayuda de Marta. Bruno investigaba la filtración desde fuera y Clara creó una coartada falsa para protegerlo.</p>
+<p>El verdadero responsable era el inspector <b>Rodrigo León</b>, que vendía información de investigaciones antes de que se hiciera pública.</p>
+<p>Pero el último mensaje no era para la policía.</p>
+<div class="paper"><p><b>Para Jessica e Iván:</b></p><p>«Si habéis llegado hasta aquí, habéis encontrado todas las piezas. El expediente 47 no necesitaba detectives perfectos. Solo necesitaba dos personas capaces de mirar dos veces.</p><p>Y si alguna vez dudáis de una pista, recordad: <b>te quiero igual</b>.</p><p>— A.»</p></div>
+<p class="small">23 · 07 · 24 · J.F. / I.M. · FIN DE LA INVESTIGACIÓN</p>
+</div>
+</section>
+</main></div>
+</div>
+<script>
+const order=['intro','scene','suspects','press','map','comms','safe','final']; let idx=0,started=false,seconds=5400,timer;
+const nav=[...document.querySelectorAll('.nav button')];
+function begin(){started=true; unlock('scene'); startTimer(); show('scene')}
+function startTimer(){timer=setInterval(()=>{if(seconds>0){seconds--;let h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;clock.textContent=[h,m,s].map(x=>String(x).padStart(2,'0')).join(':')}},1000)}
+function show(id){document.querySelectorAll('.chapter').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');nav.forEach(b=>b.classList.toggle('active',b.dataset.c===id))}
+function unlock(id){let b=nav.find(x=>x.dataset.c===id);if(b){b.classList.remove('locked');b.onclick=()=>show(id)}}
+nav[0].onclick=()=>show('intro');
+function answer(id,expected,fb,next){
+ let v=document.getElementById(id).value.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+ let f=document.getElementById(fb);
+ if(v===expected){f.textContent='✓ Correcto. Una nueva sección del expediente queda desbloqueada.';f.className='feedback ok';unlock(next);show(next)}
+ else{f.textContent='✗ No encaja. Volved a las pruebas; una pista está siendo interpretada de forma incorrecta.';f.className='feedback bad'}
+}
+function mapPin(n){
+ const m=document.getElementById('mapmsg');
+ if(n===6){m.textContent='✗ El apeadero está en otra zona. Buscad al norte.';m.className='feedback bad'}
+ else if(n===4){m.textContent='✓ ALMACENES DEL NORTE. Una anotación revela: «AZUL = ARCHIVO 47». La siguiente sección se abre.';m.className='feedback ok';unlock('comms');show('comms')}
+ else {m.textContent='No hay nada relevante aquí.';m.className='feedback bad'}
+}
+function finish(){
+ let v=document.getElementById('s7').value.trim().toLowerCase();
+ let f=document.getElementById('f7');
+ if(v==='te quiero igual'||v==='te quiero 3000'){f.textContent='✓ La frase correcta ha activado el último archivo.';f.className='feedback ok';document.getElementById('ending').classList.remove('hidden');clearInterval(timer);document.getElementById('ending').scrollIntoView({behavior:'smooth'})}
+ else{f.textContent='✗ La frase está escondida en el expediente. Buscad la anotación personal.';f.className='feedback bad'}
+}
+</script>
+</body></html>
