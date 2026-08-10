@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EXPEDIENTE 47 · La última investigación</title>
+<style>
+:root{--bg:#0b0c0d;--panel:#151718;--panel2:#1d2022;--paper:#e5ddca;--ink:#201d18;--gold:#c6a15b;--red:#a94d47;--muted:#92979a;--green:#739b78}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 50% -10%,#303033,#0b0c0d 50%);color:#eee9df;font-family:Georgia,serif}
+button,input,select{font:inherit}.app{max-width:1250px;margin:auto;padding:18px}
+header{display:flex;gap:18px;align-items:flex-end;border-bottom:1px solid #36383a;padding:15px 0 20px}
+.logo{font-size:13px;letter-spacing:4px;color:var(--gold)} h1{font-size:clamp(34px,7vw,76px);margin:2px 0;line-height:.9}.tag{color:#9d9d98;font-family:Arial,sans-serif;font-size:12px}
+.layout{display:grid;grid-template-columns:245px 1fr;gap:16px;margin-top:16px}.side{background:#111314;border:1px solid #303335;border-radius:10px;padding:12px;align-self:start;position:sticky;top:12px}
+.nav button{width:100%;text-align:left;border:0;border-bottom:1px solid #292b2c;background:transparent;color:#aaa;padding:12px 8px;cursor:pointer}.nav button:hover,.nav button.active{color:#f1e7d4;background:#1c1f20}.nav button.locked{opacity:.4;cursor:not-allowed}.timer{margin:8px 0 12px;padding:14px;text-align:center;border:1px solid #3b3d3e;background:#0c0d0e;font:700 24px Arial}.timer small{display:block;font-size:9px;letter-spacing:2px;color:#888;margin-bottom:5px}
+.content{min-width:0}.chapter{display:none}.chapter.active{display:block}.hero,.card{background:linear-gradient(145deg,#181b1c,#111314);border:1px solid #333637;border-radius:10px;padding:22px;margin-bottom:16px;box-shadow:0 12px 35px #0006}.hero{min-height:420px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--gold)} h2{font-size:34px;margin:8px 0 12px} h3{margin-top:0}.muted{color:var(--muted)} .stamp{display:inline-block;border:1px solid #a54d48;color:#d07d77;padding:7px 10px;font:700 10px Arial;letter-spacing:2px;transform:rotate(-2deg);margin-top:10px}
+.paper{background:var(--paper);color:var(--ink);padding:24px;border-radius:3px;margin:15px 0;box-shadow:0 8px 20px #0008;position:relative}.paper:before{content:"";position:absolute;inset:8px;border:1px solid #a9a08d;pointer-events:none}.paper>*{position:relative}.paper h3{color:#302b24}.note{background:#d9cfb8;color:#28231d;padding:15px;transform:rotate(-.6deg);font-family:"Courier New",monospace;border-left:4px solid #8d7d5d;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.evidence{background:#121516;border:1px solid #353839;padding:14px;border-radius:7px}.evidence b{color:var(--gold);font-family:Arial;font-size:12px}.photo{height:auto;background:linear-gradient(135deg,#4b4034,#171717 45%,#30291f);border:1px solid #625744;display:flex;align-items:flex-end;padding:12px;color:#e4dac6;font:11px Arial;margin-bottom:10px}.suspect{min-height:190px}.suspect .avatar{height:80px;width:80px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#b9a894,#514b43 40%,#202020 42%);float:left;margin:0 12px 8px 0;filter:grayscale(1)}
+table{width:100%;border-collapse:collapse;font-family:Arial;font-size:13px;margin:12px 0}th,td{border:1px solid #424545;padding:9px;text-align:left}th{color:var(--gold);background:#181b1c}.map{position:relative;height:390px;background:#c7bda6;color:#2a2925;overflow:hidden;border:8px solid #4d4335}.map:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(12deg,transparent 0 34px,#a59b87 35px 37px),repeating-linear-gradient(98deg,transparent 0 49px,#a59b87 50px 52px);opacity:.55}.pin{position:absolute;z-index:2;background:#251f18;color:#f1dfbb;border:2px solid #c6a15b;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:bold 12px Arial;cursor:pointer}.p1{left:13%;top:20%}.p2{left:42%;top:32%}.p3{left:58%;top:67%}.p4{left:76%;top:22%}.p5{left:70%;top:77%}.p6{left:24%;top:70%}
+input{width:100%;padding:12px;background:#0b0d0e;color:#eee;border:1px solid #464a4b;border-radius:5px;margin:7px 0 8px}button.action{padding:11px 16px;border-radius:5px;border:1px solid var(--gold);background:transparent;color:#eee;cursor:pointer}button.action:hover{background:#c6a15b18}.primary{background:var(--gold)!important;color:#1a160e!important;font-weight:bold}.feedback{min-height:22px;font:13px Arial;margin-top:8px}.ok{color:#83b987}.bad{color:#d9827a}.lockedbox{border:1px dashed #555;padding:20px;text-align:center;color:#888}.code{font:700 28px "Courier New";letter-spacing:8px;text-align:center;padding:16px;background:#0b0c0d;border:1px solid #343738}
+audio{width:100%}.secret{border-color:#856b35;background:#19170f}.final{border-color:var(--gold);background:radial-gradient(circle at 50% 0,#352a17,#171513 55%);text-align:center;padding:35px}.small{font:12px Arial;color:#858a8b}.hidden{display:none!important}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{position:static}.grid,.grid3{grid-template-columns:1fr}.map{height:300px}}
+.evidence figcaption{font:12px Arial;color:#aaa;padding-top:8px}.evidence{margin:0}\n.photo{position:relative;overflow:hidden;height:auto;min-height:0;display:block;padding:12px}.photo .evidence-photo{width:100%;height:auto;max-height:560px;object-fit:contain;display:block;cursor:zoom-in}.notebook-hotspot{position:absolute;left:10%;bottom:8%;width:42%;height:34%;background:transparent;border:0;cursor:pointer;z-index:3}.notebook-hotspot:focus{outline:1px solid var(--gold);outline-offset:-2px}.clue-strip{font:12px Arial;color:#aaa;padding-top:8px}.clue-strip{font:12px Arial;color:#aaa;padding-top:8px;flex:0 0 auto}\n
+.book-overlay{display:none;position:fixed;inset:0;background:#000d;z-index:9000;align-items:center;justify-content:center;padding:24px}.book-overlay.show{display:flex}.book-shell{width:min(1050px,96vw);max-height:92vh;overflow:auto;background:#15120e;border:1px solid #80693d;border-radius:10px;box-shadow:0 25px 80px #000;color:#2b261f;padding:18px}.book-close{float:right;background:#1a1815;color:#eee;border:1px solid #80693d;padding:8px 11px;cursor:pointer}.book-title{font:700 18px Arial;color:var(--gold);letter-spacing:2px}.book-subtitle{font:12px Arial;color:#999;margin:6px 0 16px}.book-body{display:grid;grid-template-columns:180px 1fr;gap:14px}.page-list{background:#0d0f10;border:1px solid #343638;padding:10px;max-height:62vh;overflow:auto}.page-tab{display:block;width:100%;padding:9px 8px;margin-bottom:6px;text-align:left;background:#171a1b;border:1px solid #353738;color:#bbb;cursor:pointer;font:12px Arial}.page-tab.active{border-color:var(--gold);color:#f3dfb1}.page-tab.missing{color:#555;border-style:dashed;cursor:default}.book-page-area{min-width:0}.book-page{min-height:470px;background:#e5ddca;border:10px solid #30271c;box-shadow:inset 0 0 0 1px #a79b82;padding:28px;position:relative;font-family:Georgia,serif;color:#2b261f;background-image:linear-gradient(transparent 31px,#cfc4ab 32px);background-size:100% 32px}.book-page h3{margin:0 0 14px;font-size:24px}.book-page .hand{font-family:"Courier New",monospace}.book-page .line{display:block;min-height:32px}.book-page .target{background:#d0b46d66;border-left:4px solid #7d6435;padding-left:8px;font-weight:bold}.book-controls{display:flex;align-items:center;justify-content:space-between;margin-top:10px}.book-controls span{font:12px Arial;color:#aaa}.book-tip{margin-top:12px;background:#242018;color:#d9cba9;padding:12px;font:13px Arial;border-left:3px solid var(--gold)}.cipher-table{display:grid;grid-template-columns:repeat(10,1fr);gap:0;margin:12px 0;border:1px solid #8c816b}.cipher-table div{padding:7px 4px;text-align:center;border-right:1px solid #b0a48d;border-bottom:1px solid #b0a48d;font:12px Arial}.cipher-table .head{font-weight:bold;background:#d4c7aa}.cipher-table .gold{background:#d9bd7166;font-weight:bold}@media(max-width:800px){.book-body{grid-template-columns:1fr}.page-list{max-height:120px;display:flex;gap:6px;overflow-x:auto}.page-tab{min-width:80px;margin:0}.book-page{min-height:430px;padding:20px}}
+
+.scene-evidence-row{display:grid;grid-template-columns:minmax(0,2.25fr) minmax(230px,.75fr);gap:14px;align-items:stretch;margin-bottom:12px}.scene-photo-frame{margin:0;background:#111;border:1px solid #625744;padding:10px;overflow:hidden}.scene-photo-frame .evidence-photo{width:100%;height:auto;max-height:520px;object-fit:contain;display:block;cursor:zoom-in}.scene-photo-frame figcaption{font:11px Arial;color:#aaa;padding-top:8px}.notebook-card{background:linear-gradient(145deg,#211b12,#131313);border:1px solid #80693d;border-radius:7px;padding:18px;display:flex;flex-direction:column;justify-content:center;min-height:260px}.notebook-card h3{color:#eee3c9;font-size:22px;margin:8px 0 10px}.notebook-card p{color:#c9c0ae;line-height:1.5}.notebook-card .action{margin-top:12px;width:100%}.code-line{margin-top:8px;padding-top:8px;border-top:1px dashed #a99b7d}.code-seq{display:block;margin-top:8px;letter-spacing:4px;font-family:"Courier New",monospace;font-size:18px}.book-page .target{background:transparent;border-left:0;padding-left:0;font-weight:normal}@media(max-width:800px){.scene-evidence-row{grid-template-columns:1fr}.notebook-card{min-height:0}}
+.closing-letter{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:24px}.closing-letter.show{display:flex}.closing-letter img{max-width:min(760px,92vw);max-height:88vh;object-fit:contain;box-shadow:0 18px 60px rgba(0,0,0,.65);border:1px solid #80693d}</style>
+</head>
+<body>
+<div class="app">
+<header><div><div class="logo">UNIDAD DE CASOS ESPECIALES</div><h1>EXPEDIENTE 47</h1><div class="tag">LA ÚLTIMA INVESTIGACIÓN · ACCESO RESTRINGIDO</div></div></header>
+<div class="layout">
+<aside class="side">
+<div class="timer"><small>TIEMPO DE INVESTIGACIÓN</small><span id="clock">01:30:00</span></div>
+<div class="nav" id="nav">
+<button data-c="intro" class="active">01 · Expediente inicial</button>
+<button data-c="scene" class="locked">02 · Escena</button>
+<button data-c="evidence" class="locked">📸 · Archivo de evidencias</button>
+<button data-c="suspects" class="locked">03 · Sospechosos</button>
+<button data-c="press" class="locked">04 · Archivo de prensa</button>
+<button data-c="map" class="locked">05 · Mapa</button>
+<button data-c="comms" class="locked">06 · Comunicaciones</button>
+<button data-c="safe" class="locked">07 · Caja 47</button>
+<button data-c="final" class="locked">08 · Verdad final</button>
+</div>
+<p class="small">Investigadores: <b>Jessica F.</b> · <b>Iván M.</b></p>
+</aside>
+<main class="content">
+
+<section id="intro" class="chapter active">
+<div class="hero">
+<div class="eyebrow">23 · 07 · 2024 · 23:47</div>
+<h2>El expediente que nunca debió llegar a vosotros</h2>
+<p>Encontráis un sobre bajo la puerta. No tiene remitente. Dentro hay una fotografía, una llave con el número <b>47</b> y una nota.</p>
+<div class="paper"><p><b>«Si estáis leyendo esto, ya es demasiado tarde para mí.</b></p><p>La policía cerró el caso Vega hace seis meses. Dicen que fue un robo. Mienten.</p><p>Hay cuatro personas que saben qué ocurrió. Una de ellas está mintiendo. Y alguien ha hecho todo lo posible para que la prueba desaparezca.</p><p>No confiéis en la versión oficial.</p><p><b>— A.</b></p></div>
+<div class="note">23 — 7 — 24<br>J.F. / I.M.<br>JFB<br>«Te quiero igual»<br>«Tomé café»</div>
+<button class="action primary" onclick="begin()">ABRIR EL EXPEDIENTE</button>
+</div>
+</section>
+
+
+<section id="evidence" class="chapter">
+<div class="card">
+<div class="eyebrow">ARCHIVO 00 · EVIDENCIAS RECUPERADAS</div>
+<h2>Archivo fotográfico</h2>
+<p class="muted">Este archivo se actualiza a medida que avanzáis. Volved aquí cuando necesitéis examinar una prueba con más calma.</p>
+<div class="grid">
+<figure class="evidence"><img class="evidence-photo" src="img/01_despacho_alex.jpg" onclick="zoom(this.src)"><figcaption>01 · Despacho de Álex</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/02_coche_JFB.jpg" onclick="zoom(this.src)"><figcaption>02 · Vehículo · matrícula JFB</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/03_marta_escarabajo.jpg" onclick="zoom(this.src)"><figcaption>03 · Marta · escarabajo dorado</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/04_cafe_mirador.jpg" onclick="zoom(this.src)"><figcaption>04 · Café Mirador</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/05_informe_policial.jpg" onclick="zoom(this.src)"><figcaption>05 · Informe policial</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/06_anotaciones_alex.jpg" onclick="zoom(this.src)"><figcaption>06 · Anotaciones de Álex</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/07_recorte_prensa.jpg" onclick="zoom(this.src)"><figcaption>07 · Recorte de prensa</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/08_mapa_ciudad.jpg" onclick="zoom(this.src)"><figcaption>08 · Mapa de la ciudad</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/09_caja_47.jpg" onclick="zoom(this.src)"><figcaption>09 · Caja 47</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/10_recibo_cafe.jpg" onclick="zoom(this.src)"><figcaption>10 · Recibo del café</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/11_audio_transcripcion.jpg" onclick="zoom(this.src)"><figcaption>11 · Transcripción de audio</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/12_caja_fuerte.jpg" onclick="zoom(this.src)"><figcaption>12 · Caja fuerte 47</figcaption></figure>
+<figure class="evidence"><img class="evidence-photo" src="img/13_carta_final.jpg" onclick="zoom(this.src)"><figcaption>13 · Carta final</figcaption></figure>
+</div>
+</div>
+</section>
+
+<section id="scene" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 01 · La escena</div><h2>La fotografía de Álex</h2>
+<p>El informe afirma que el reloj fue encontrado detenido a las <b>20:51</b>. La fotografía demuestra otra cosa.</p>
+<div class="scene-evidence-row">
+  <figure class="scene-photo-frame">
+    <img class="evidence-photo" src="img/01_despacho_alex.jpg" alt="Fotografía del despacho de Álex" onclick="zoom(this.src)">
+    <figcaption>01 · Despacho de Álex · Haz clic para ampliar</figcaption>
+  </figure>
+  <aside class="notebook-card">
+    <div class="eyebrow">OBJETO RECUPERADO</div>
+    <h3>📓 Cuaderno alfanumérico</h3>
+    <p>Cuaderno personal de Álex. Algunas páginas han sido arrancadas.</p>
+    <p class="small">Las hojas recuperadas conservan numeración.</p>
+    <button class="action primary" onclick="openNotebook()">ABRIR CUADERNO</button>
+  </aside>
+</div>
+<div class="grid">
+<div class="evidence"><b>INFORME POLICIAL</b><p>20:51 — Álex compra café.<br>21:03 — entra en el edificio.<br>21:17 — vecino escucha un golpe.</p><p class="small">El reloj no parece detenido a las 20:51.</p></div>
+<div class="evidence"><b>OBJETO CATALOGADO</b><p><b>Cuaderno alfanumérico</b></p><p class="small">Cuaderno personal de Álex. Contiene páginas numeradas, algunas arrancadas.</p></div>
+</div>
+<div class="note"><b>Primera observación</b><br>La única hora que podéis leer directamente en la fotografía es <b>21:17</b>. El cuaderno puede contener la forma de interpretarla.</div>
+<input id="s1" placeholder="Palabra"><button class="action" onclick="answer('s1','SECRETO','f1','suspects')">COMPROBAR</button><div id="f1" class="feedback"></div>
+</div></section>
+
+<div id="notebook" class="book-overlay" aria-hidden="true">
+<div class="book-shell">
+<button class="book-close" onclick="closeNotebook()">CERRAR ✕</button>
+<div class="book-title">CUADERNO ALFANUMÉRICO · ÁLEX</div>
+<div class="book-subtitle">Páginas recuperadas del despacho · Algunas hojas fueron arrancadas</div>
+<div class="book-body">
+<aside class="page-list" id="pageList"></aside>
+<section class="book-page-area">
+<div class="book-page" id="bookPage"></div>
+<div class="book-controls"><button class="action" onclick="prevPage()">← ANTERIOR</button><span id="pageCounter"></span><button class="action" onclick="nextPage()">SIGUIENTE →</button></div>
+</section>
+</div>
+<div class="book-tip">Las páginas arrancadas dejan huecos. Fijaos en la numeración y en las anotaciones.</div>
+</div>
+</div>
+
+<section id="suspects" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 02 · Los cuatro</div><h2>Todos tienen algo que ocultar</h2>
+<div class="grid2 grid">
+<div class="evidence suspect"><div class="avatar"></div><h3>Clara Vidal</h3><p>Abogada de Álex. Asegura haber hablado con él a las 21:20.</p><p class="small">Registro: no existe ninguna llamada a esa hora.</p></div>
+<div class="evidence suspect"><div class="avatar"></div><h3>Bruno Salas</h3><p>Periodista. Antiguo compañero de Álex.</p><p class="small">En su ordenador: VEGA_47_FINAL.docx</p></div>
+<div class="evidence suspect"><div class="avatar"></div><h3>Marta Ruiz</h3><p>Vecina del edificio. Dice haber visto salir a un hombre a las 21:30.</p><p class="small">Lleva un collar con un escarabajo dorado.</p></div>
+<div class="evidence suspect"><div class="avatar"></div><h3>Diego León</h3><p>Dueño del Café Mirador. Coartada: 21:10–22:00.</p><p class="small">Diego no tenía empleados esa noche. Su coche, matrícula <b>JFB 2417</b>, estaba aparcado en el parking del Café Mirador.</p></div></div>
+<table><tr><th>Registro</th><th>Hora</th><th>Dato</th></tr><tr><td>Entrada edificio</td><td>21:03</td><td>Álex entra</td></tr><tr><td>Última llamada</td><td>20:42</td><td>17 segundos</td></tr><tr><td>Declaración Clara</td><td>21:20</td><td>«Hablé con Álex»</td></tr><tr><td>Recibo Café Mirador</td><td>21:32</td><td>2 cafés + 1 agua</td></tr></table>
+<p>¿Quién miente?</p>
+<div id="claraReason" class="note hidden">
+<b>¿Por qué mintió Clara?</b><br>
+Clara sabía que el pendrive de Álex contenía pruebas sobre una filtración que podía comprometer a varias personas. Necesitaba ganar tiempo y hacer creer que Álex seguía vivo después de las 21:17, para retrasar la búsqueda del despacho y evitar que la desaparición del pendrive quedara vinculada a ella.
+</div>
+<input id="s2" placeholder="Nombre y apellido"><button class="action" onclick="checkClara()">COMPROBAR</button><div id="f2" class="feedback"></div>
+</div></section>
+
+<section id="press" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 03 · Archivo de prensa</div><h2>Cuatro casos, un patrón</h2>
+<p>Hay cuatro recortes. Las fechas parecen decorativas. No lo son.</p>
+<div class="grid">
+<div class="paper"><h3>22/03/24 · EL DIARIO</h3><p>Empresario hallado muerto en extrañas circunstancias.</p><p>Acceso previo a información policial.</p></div>
+<div class="paper"><h3>15/05/24 · LA VOZ</h3><p>Robo de documentos confidenciales en el puerto.</p><p>Sin forzar cerraduras.</p></div>
+<div class="paper"><h3>23/07/24 · LA TRIBUNA</h3><p>Desaparición del periodista Álex Vega.</p><p>Expediente 47.</p></div>
+<div class="paper"><h3>02/09/24 · EL NORTE</h3><p>Nuevo caso de filtración de información policial.</p><p>Fuente anónima.</p></div></div>
+<div class="note">22/03/24 · 15/05/24 · 23/07/24 · 02/09/24<br><br>Busca qué número comparten las fechas al separar DÍA / MES / AÑO.</div>
+<p>El número que necesitáis es el <b>día</b> de la fecha de Álex. Combinadlo con la matrícula encontrada en el expediente de Diego. JFB no es una matrícula: es un desplazamiento.</p>
+<input id="s3" placeholder="Tres letras"><button class="action" onclick="answer('s3','QIO','f3','map')">COMPROBAR</button><div id="f3" class="feedback"></div>
+</div></section>
+
+<section id="map" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 04 · El mapa</div><h2>Donde terminan las vías</h2>
+<p>La grabadora recuperada contiene una frase:</p><div class="paper"><p>«Buscad el lugar donde la ciudad termina pero las vías continúan. Norte. 17. Azul.»</p></div>
+<div class="map"><button class="pin p1" onclick="mapPin(1)">1</button><button class="pin p2" onclick="mapPin(2)">2</button><button class="pin p3" onclick="mapPin(3)">3</button><button class="pin p4" onclick="mapPin(4)">4</button><button class="pin p5" onclick="mapPin(5)">5</button><button class="pin p6" onclick="mapPin(6)">6</button></div>
+<div id="mapmsg" class="feedback"></div>
+<p class="small">Pista: el lugar correcto tiene vías y está en el extremo norte del mapa. El número 17 aparece en la nota de Álex.</p>
+</div></section>
+
+<section id="comms" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 05 · Comunicaciones</div><h2>La canción en el recibo</h2>
+<p>En el Café Mirador aparece un recibo con una anotación:</p>
+<div class="paper"><p>2 cafés · 1 agua · 1 llamada desde cabina</p><p><b>TOMÉ CAFÉ</b></p><p>JFB · 23/07/24 · 21:32</p></div>
+<p>Álex dejó una instrucción: <em>«La primera letra de cada palabra que tomo.»</em></p>
+<p>Tomad la primera letra de las palabras <b>TOMÉ CAFÉ</b>, después usad <b>JFB</b> como desplazamiento -1, -2, -3.</p>
+<div class="code">S K ?</div>
+<p>¿Qué palabra de tres letras obtenéis?</p>
+<input id="s5" placeholder="Palabra"><button class="action" onclick="answer('s5','RIO','f5','safe')">COMPROBAR</button><div id="f5" class="feedback"></div>
+</div></section>
+
+<section id="safe" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 06 · Caja 47</div><h2>La llave abre algo más que una puerta</h2>
+<p>La caja tiene tres ruedas. La nota dice:</p>
+<div class="note">PRIMERA RUEDA: la fecha que no es una fecha.<br>SEGUNDA RUEDA: el número que aparece donde nadie mira.<br>TERCERA RUEDA: la persona que lleva el símbolo.</div>
+<p>Ya conocéis:</p><ul><li>23/07/24 → 23</li><li>17 → reloj</li><li>escarabajo dorado → Marta</li></ul>
+<p>Convertid <b>MARTA</b> a números con A=1 y sumad las cifras hasta obtener un solo dígito.</p>
+<div class="code">23 · 17 · ?</div>
+<input id="s6" placeholder="Código de tres números, ej. 23-17-7"><button class="action" onclick="answer('s6','23-17-2','f6','final')">ABRIR CAJA 47</button><div id="f6" class="feedback"></div>
+</div></section>
+
+<section id="final" class="chapter">
+<div class="card"><div class="eyebrow">Prueba 07 · La verdad</div><h2>La persona que nunca desapareció</h2>
+<p>Dentro de la caja hay una carta.</p>
+<div class="paper"><p><b>«No busquéis a quien me hizo desaparecer.</b></p><p>Buscad a quien necesitaba que yo desapareciera.</p><p>La ventana, el reloj y la llamada fueron una mentira. La persona del escarabajo ayudó a construirla.</p><p>El hombre de la matrícula JFB no era el culpable. Y Clara mintió para protegerme.</p><p>El verdadero responsable tenía acceso a los expedientes antes de que fueran públicos.</p><p>Su firma aparece en todos los casos.</p><p>— Álex»</p></div>
+<p>Revisad los documentos. La evidencia 09 contiene el informe de custodia y la firma completa del responsable.</p>
+<figure class="evidence"><img class="evidence-photo" src="img/09_informe_policial.jpg" alt="Informe de custodia con el nombre completo del responsable" onclick="zoom(this.src)"><figcaption>09 · Informe de custodia · firma y nombre completo del responsable</figcaption></figure>
+<p>Pero falta una última prueba. Introducid la frase personal que Álex escondió en el expediente.</p>
+<input id="s7" placeholder="Frase"><button class="action" onclick="finish()">RESOLVER EL CASO</button><div id="f7" class="feedback"></div>
+</div>
+<div id="ending" class="card final hidden"><div id="closingLetter" class="closing-letter"><img src="img/11_carta_jessica.jpg" alt="Carta final de Jessica para Iván" onclick="zoom(this.src)"></div>
+<div class="eyebrow">EXPEDIENTE 47 · CERRADO</div><h2>CASO RESUELTO</h2>
+<p>Álex Vega fingió su desaparición con ayuda de Marta. Bruno investigaba la filtración desde fuera y Clara creó una coartada falsa para protegerlo.</p>
+<p>El verdadero responsable era el inspector <b>Rodrigo León</b>, que vendía información de investigaciones antes de que se hiciera pública.</p>
+<p>Pero el último mensaje no era para la policía.</p>
+<div class="paper"><p><b>Para Jessica e Iván:</b></p><p>«Si habéis llegado hasta aquí, habéis encontrado todas las piezas. El expediente 47 no necesitaba detectives perfectos. Solo necesitaba dos personas capaces de mirar dos veces.</p><p>Y si alguna vez dudáis de una pista, recordad: <b>te quiero igual</b>.</p><p>— A.»</p></div>
+<p class="small">23 · 07 · 24 · J.F. / I.M. · FIN DE LA INVESTIGACIÓN</p>
+</div>
+</section>
+</main></div>
+</div>
+<script>
+const order=['intro','scene','suspects','press','map','comms','safe','final']; let idx=0,started=false,seconds=5400,timer;
+const nav=[...document.querySelectorAll('.nav button')];
+function begin(){started=true; unlock('scene'); startTimer(); show('scene')}
+function startTimer(){timer=setInterval(()=>{if(seconds>0){seconds--;let h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;clock.textContent=[h,m,s].map(x=>String(x).padStart(2,'0')).join(':')}},1000)}
+function show(id){document.querySelectorAll('.chapter').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');nav.forEach(b=>b.classList.toggle('active',b.dataset.c===id));if(id==='press'){const c=document.getElementById('claraReason');if(c)c.classList.add('hidden')}}
+function unlock(id){let b=nav.find(x=>x.dataset.c===id);if(b){b.classList.remove('locked');b.onclick=()=>show(id)}}
+nav[0].onclick=()=>show('intro');
+function answer(id,expected,fb,next){
+ let v=document.getElementById(id).value.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+ let f=document.getElementById(fb);
+ if(v===expected){f.textContent='✓ Correcto. Una nueva sección del expediente queda desbloqueada.';f.className='feedback ok';unlock(next);show(next)}
+ else{f.textContent='✗ No encaja. Volved a las pruebas; una pista está siendo interpretada de forma incorrecta.';f.className='feedback bad'}
+}
+function checkClara(){
+ let v=document.getElementById('s2').value.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+ let f=document.getElementById('f2');
+ if(v==='CLARA VIDAL'){
+   f.textContent='✓ Correcto. La declaración de Clara no encaja con los registros.';
+   f.className='feedback ok';
+   document.getElementById('claraReason').classList.remove('hidden');
+   unlock('press');
+   show('suspects');
+ } else {
+   f.textContent='✗ No encaja. Volved a las pruebas.';
+   f.className='feedback bad';
+ }
+}
+function mapPin(n){
+ const m=document.getElementById('mapmsg');
+ if(n===6){m.textContent='✗ El apeadero está en otra zona. Buscad al norte.';m.className='feedback bad'}
+ else if(n===4){m.textContent='✓ ALMACENES DEL NORTE. Una anotación revela: «AZUL = ARCHIVO 47». La siguiente sección se abre.';m.className='feedback ok';unlock('comms');show('comms')}
+ else {m.textContent='No hay nada relevante aquí.';m.className='feedback bad'}
+}
+function finish(){
+ let v=document.getElementById('s7').value.trim().toLowerCase();
+ let f=document.getElementById('f7');
+ if(v==='te quiero igual'||v==='te quiero 3000'){
+   f.textContent='✓ La frase correcta ha activado el último mensaje.';
+   f.className='feedback ok';
+   document.getElementById('ending').classList.remove('hidden');
+   document.getElementById('closingLetter').classList.add('show');
+   clearInterval(timer);
+   document.getElementById('ending').scrollIntoView({behavior:'smooth'});
+ } else {
+   f.textContent='✗ La frase está escondida en el expediente. Buscad la anotación personal.';
+   f.className='feedback bad';
+ }
+}
+
+const recoveredPages=[1,2,5,12,13,20,21];let currentPageIndex=0;
+function openNotebook(){const el=document.getElementById('notebook');el.classList.add('show');el.setAttribute('aria-hidden','false');renderPageList();renderNotebookPage()}
+function closeNotebook(){const el=document.getElementById('notebook');el.classList.remove('show');el.setAttribute('aria-hidden','true')}
+function renderPageList(){const list=document.getElementById('pageList');list.innerHTML='';for(let n=1;n<=21;n++){const b=document.createElement('button');b.className='page-tab '+(recoveredPages.includes(n)?'':'missing')+(recoveredPages[currentPageIndex]===n?' active':'');b.textContent=recoveredPages.includes(n)?'PÁGINA '+n:'PÁGINA '+n+' · ARRANCADA';if(recoveredPages.includes(n))b.onclick=()=>{currentPageIndex=recoveredPages.indexOf(n);renderPageList();renderNotebookPage()};else b.disabled=true;list.appendChild(b)}}
+function renderNotebookPage(){const n=recoveredPages[currentPageIndex];const page=document.getElementById('bookPage');const data={
+1:`<h3>1 · Inventario</h3><p class="hand">Despacho: grabadora, taza, reloj digital, archivador y este cuaderno.</p><p class="hand">No escribir nada que pueda entender otra persona.</p>`,
+2:`<h3>2 · Regla</h3><p class="hand"><b>A = 1 · B = 2 · C = 3 · ... · Z = 26</b></p>`,
+5:`<h3>5 · Nota</h3><p class="hand">Cuando una hora es importante, la escribo separando sus dos partes.</p><p class="hand">La primera cifra me lleva a una hoja; la segunda, a un lugar dentro de ella.</p>`,
+12:`<h3>12 · Recordatorio</h3><p class="hand">No confiar en la primera versión de un informe.</p><p class="hand">La fotografía siempre conserva lo que alguien intentó cambiar.</p>`,
+13:`<h3>13 · Café</h3><p class="hand">20:51. Café. Después, edificio.</p><p class="hand">Si alguien dice que el reloj estaba parado antes de entrar, comprobar la fotografía.</p>`,
+20:`<h3>20 · Última página antes del corte</h3><p class="hand">He tenido que arrancar varias hojas.</p><p class="hand">Las páginas que quedan no cuentan toda la historia, pero la numeración sigue siendo la misma.</p>`,
+21:`<h3>21 · Apuntes</h3><p class="hand">La página está llena de anotaciones. No todo lo escrito tiene la misma importancia.</p><div class="line"><b>14.</b> No mirar atrás.</div><div class="line"><b>15.</b> La verdad está en los números.</div><div class="line"><b>16.</b> No usar la hora como letras.</div><div class="line code-line"><b>17.</b><span class="code-seq">19 · 5 · 3 · 18 · 5 · 20 · 15</span></div><div class="line"><b>18.</b> Si lo habéis encontrado, ya sabéis la palabra.</div>`};page.innerHTML=data[n];document.getElementById('pageCounter').textContent='Página '+n+' · '+(currentPageIndex+1)+' / '+recoveredPages.length}
+function nextPage(){if(currentPageIndex<recoveredPages.length-1){currentPageIndex++;renderPageList();renderNotebookPage()}}
+function prevPage(){if(currentPageIndex>0){currentPageIndex--;renderPageList();renderNotebookPage()}}
+</script>
+
+<style>
+body{background:#0b0c0d;color:#eee;font-family:Georgia,serif}
+.visual-evidence{max-width:1100px;margin:20px auto;padding:20px}
+.visual-evidence h2{color:#c6a15b}
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.evidence-grid figure{margin:0;background:#151718;border:1px solid #3a3c3d;padding:8px}
+.evidence-grid img{width:100%;display:block;cursor:zoom-in}
+.evidence-grid figcaption{padding:8px 4px;font:12px Arial;color:#aaa}
+#lb{display:none;position:fixed;inset:0;background:#000e;z-index:9999;align-items:center;justify-content:center;padding:20px}
+#lb.show{display:flex}#lb img{max-width:95vw;max-height:92vh;border:1px solid #c6a15b}
+#lb button{position:absolute;top:15px;right:20px;padding:10px;background:#151718;color:#fff;border:1px solid #c6a15b}
+</style>
+<div class="visual-evidence">
+<h2>ARCHIVO FOTOGRÁFICO · EVIDENCIAS</h2>
+<p>Haz clic en cualquier evidencia para ampliarla. Algunas contienen detalles importantes.</p>
+<div class="evidence-grid">
+<figure><img src="img/01_despacho_alex.jpg" onclick="zoom(this.src)"><figcaption>01 · Despacho de Álex</figcaption></figure>
+<figure><img src="img/02_coche_JFB.jpg" onclick="zoom(this.src)"><figcaption>02 · Vehículo · JFB</figcaption></figure>
+<figure><img src="img/03_marta_escarabajo.jpg" onclick="zoom(this.src)"><figcaption>03 · Marta · escarabajo dorado</figcaption></figure>
+<figure><img src="img/04_cafe_mirador.jpg" onclick="zoom(this.src)"><figcaption>04 · Café Mirador</figcaption></figure>
+<figure><img src="img/05_informe_policial.jpg" onclick="zoom(this.src)"><figcaption>05 · Informe policial</figcaption></figure>
+<figure><img src="img/06_anotaciones_alex.jpg" onclick="zoom(this.src)"><figcaption>06 · Anotaciones de Álex</figcaption></figure>
+<figure><img src="img/07_recorte_prensa.jpg" onclick="zoom(this.src)"><figcaption>07 · Recorte de prensa</figcaption></figure>
+<figure><img src="img/08_mapa_ciudad.jpg" onclick="zoom(this.src)"><figcaption>08 · Mapa de la ciudad</figcaption></figure>
+<figure><img src="img/09_caja_47.jpg" onclick="zoom(this.src)"><figcaption>09 · Caja 47</figcaption></figure>
+<figure><img src="img/10_recibo_cafe.jpg" onclick="zoom(this.src)"><figcaption>10 · Recibo del café</figcaption></figure>
+<figure><img src="img/11_audio_transcripcion.jpg" onclick="zoom(this.src)"><figcaption>11 · Audio 03 · transcripción</figcaption></figure>
+<figure><img src="img/12_caja_fuerte.jpg" onclick="zoom(this.src)"><figcaption>12 · Caja fuerte 47</figcaption></figure>
+<figure><img src="img/13_carta_final.jpg" onclick="zoom(this.src)"><figcaption>13 · Carta final</figcaption></figure>
+</div></div>
+<div id="lb" onclick="closeZoom()"><button onclick="closeZoom();event.stopPropagation()">CERRAR ✕</button><img id="lbimg" onclick="event.stopPropagation()"></div>
+<script>
+function zoom(src){document.getElementById('lbimg').src=src;document.getElementById('lb').classList.add('show')}
+function closeZoom(){document.getElementById('lb').classList.remove('show')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom()})
+</script>
+</body></html>
